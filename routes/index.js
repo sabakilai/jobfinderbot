@@ -39,7 +39,7 @@ router.post("/", function(req, res, next) {
         console.log("user follows");
         newChat(userId, ip, function(err, res, body) {
           var chatId = body.data.id;
-          var message = "Здравствуйте!Я буду присылать свежие вакансии." + selectSign();
+          var message = "Здравствуйте!Я буду присылать свежие вакансии." + selectField();
           sms(message, chatId, ip);
         })
       });
