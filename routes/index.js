@@ -66,7 +66,7 @@ router.post("/", function(req, res, next) {
               correctAnswer.push(i.toString());
           }
           if (correctAnswer.indexOf(content)>= 0) {
-            let message = "Вы выбрали категорию '" + dict(content).title + "'." + allComands();
+            let message = "Вы выбрали категорию '" + dict(content).title + "'.";
             db.update({branch: dict(content).branch, state:false}, {where: {userId: userId}}).then(function(user) {
               sms(message, chatId, ip, function() {
                 setTimeout(function() {
