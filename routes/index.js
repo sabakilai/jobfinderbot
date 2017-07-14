@@ -88,11 +88,11 @@ router.post("/", function(req, res, next) {
             else if(content == "5"){
               parser(branch,5).then((data)=>{
                 Promise.all([
-                  new_sms(data[0].title+'\n'+data[0].salary+'\n'+data[0].company+'\n'+data[0].address+'\n'+data[0].apropos+'\n'+data[0].link,chatId,ip),
-                  new_sms(data[1].title+'\n'+data[1].salary+'\n'+data[1].company+'\n'+data[1].address+'\n'+data[1].apropos+'\n'+data[1].link,chatId,ip),
-                  new_sms(data[2].title+'\n'+data[2].salary+'\n'+data[2].company+'\n'+data[2].address+'\n'+data[2].apropos+'\n'+data[2].link,chatId,ip),
-                  new_sms(data[3].title+'\n'+data[3].salary+'\n'+data[3].company+'\n'+data[3].address+'\n'+data[3].apropos+'\n'+data[3].link,chatId,ip),
-                  new_sms(data[4].title+'\n'+data[4].salary+'\n'+data[4].company+'\n'+data[4].address+'\n'+data[4].apropos+'\n'+data[4].link,chatId,ip),
+                  new_sms('💼'+data[0].title+'\n💰'+data[0].salary+'\n🏭'+data[0].company+'\n📍'+data[0].address+'\n💬'+data[0].apropos+'\n🔗'+data[0].link,chatId,ip),
+                  new_sms('💼'+data[1].title+'\n💰'+data[1].salary+'\n🏭'+data[1].company+'\n📍'+data[1].address+'\n💬'+data[1].apropos+'\n🔗'+data[1].link,chatId,ip),
+                  new_sms('💼'+data[2].title+'\n💰'+data[2].salary+'\n🏭'+data[2].company+'\n📍'+data[2].address+'\n💬'+data[2].apropos+'\n🔗'+data[2].link,chatId,ip),
+                  new_sms('💼'+data[3].title+'\n💰'+data[3].salary+'\n🏭'+data[3].company+'\n📍'+data[3].address+'\n💬'+data[3].apropos+'\n🔗'+data[3].link,chatId,ip),
+                  new_sms('💼'+data[4].title+'\n💰'+data[4].salary+'\n🏭'+data[4].company+'\n📍'+data[4].address+'\n💬'+data[4].apropos+'\n🔗'+data[4].link,chatId,ip),
 
                 ]).then((messages)=>{
                   console.log(messages);
