@@ -24,7 +24,7 @@ router.post("/", function(req, res, next) {
        + "\n ️2⃣4⃣Спорт, салоны красоты. \n2⃣5⃣Строительство, недвижимость.\n2⃣6⃣Туризм, гостиницы. \n 2⃣7⃣Услуги, ремонт.\n2⃣8⃣Юриспруденция. \n2⃣9⃣Работа для молодежи.\n3⃣0⃣Без опыта работы, начало карьеры.";
     }
     var allComands = function (subscribed) {
-      return "Пришлите мне одну из команд: \n5️⃣  - получить последние пять вакансий. \n1⃣0⃣ - получить последние десять вакансий. \n 'Подписка' - " +(subscribed ? "ОТКЛЮЧИТЬ" : "ВКЛЮЧИТЬ") + " ежедневную подписку. \n'Сменить', чтобы изменить категорию вакансий"
+      return "Пришлите мне одну из команд: \n5⃣ - получить последние пять вакансий. \n1⃣0⃣ - получить последние десять вакансий. \n 'Подписка' - " +(subscribed ? "ОТКЛЮЧИТЬ" : "ВКЛЮЧИТЬ") + " ежедневную подписку. \n'Сменить' - изменить категорию вакансий"
     }
 
     if(event == "user/unfollow") {
@@ -88,8 +88,12 @@ router.post("/", function(req, res, next) {
             else if(content == "5"){
               parser(branch,5).then((data)=>{
                 Promise.all([
-                  new_sms(data[0].title,chatId,ip),
-                  new_sms(data[1].title,chatId,ip)
+                  new_sms(data[0].title+'\n'+data[0].salary+'\n'+data[0].company+'\n'+data[0].address+'\n'+data[0].apropos+'\n'+data[0].link,chatId,ip),
+                  new_sms(data[1].title+'\n'+data[1].salary+'\n'+data[1].company+'\n'+data[1].address+'\n'+data[1].apropos+'\n'+data[1].link,chatId,ip),
+                  new_sms(data[2].title+'\n'+data[2].salary+'\n'+data[2].company+'\n'+data[2].address+'\n'+data[2].apropos+'\n'+data[2].link,chatId,ip),
+                  new_sms(data[3].title+'\n'+data[3].salary+'\n'+data[3].company+'\n'+data[3].address+'\n'+data[3].apropos+'\n'+data[3].link,chatId,ip),
+                  new_sms(data[4].title+'\n'+data[4].salary+'\n'+data[4].company+'\n'+data[4].address+'\n'+data[4].apropos+'\n'+data[4].link,chatId,ip),
+
                 ]).then((messages)=>{
                   console.log(messages);
                 }).catch((error)=>{
