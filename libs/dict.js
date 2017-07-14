@@ -1,5 +1,5 @@
 "use strict"
-module.expots = function (x) {
+module.exports = function (x) {
   let title;
   let branch;
   switch(x) {
