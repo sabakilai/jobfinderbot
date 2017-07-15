@@ -13,6 +13,7 @@ var sms = require("./models/sms.js");
 var newChat = require("./models/newchat.js");
 var CronJob = require('cron').CronJob;
 let parser = require('./libs/parser');
+let create = require('./lib/create');
 var app = express();
 
 
@@ -31,23 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-new CronJob('00 00 09 * * *', function() {
-  db.findAll({where: {subscribed: true }}).then(function(results) {
-    async.each(results, function(result,callback){
-      parser.getHoroscope(result.sign, 'today' ,function(output) {
-        var userId = result.userId;
-        var ip = result.ip;
-        newChat(userId, ip, function(err, res, body) {
-          if(body.data) {
-            var chatId = body.data.id;
-          }
-          sms(output, chatId, ip, function() {
-            callback();
-          });
-        })
-      })
-    })
-  });
+create();
+
+new CronJob('*/5 * * * *', function() {
+
 }, null, true, 'Asia/Bishkek');
 
 // catch 404 and forward to error handler
