@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-job.checkChanges();
+job();
 
 new CronJob('*/5 * * * *', function() {
 

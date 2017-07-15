@@ -5,9 +5,7 @@ var db = require('../data/db.js');
 var newChat = require("../models/newchat.js");
 var dict = require('./dict');
 
-module.exports = checkChanges()
-
-function checkChanges() {
+module.exports = function () {
   return new Promise ((resolve, reject)=>{
     var files = [];
     var parsers = []
