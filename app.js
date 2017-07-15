@@ -13,7 +13,7 @@ var sms = require("./models/sms.js");
 var newChat = require("./models/newchat.js");
 var CronJob = require('cron').CronJob;
 let parser = require('./libs/parser');
-let create = require('./libs/create');
+let job = require('./libs/job');
 var app = express();
 
 
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-create();
+job.checkChanges();
 
 new CronJob('*/5 * * * *', function() {
 
