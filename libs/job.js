@@ -15,10 +15,12 @@ module.exports = function () {
       files.push(AWS.read('jobkg' + dict(i.toString()).branch + '.json'));
     }
     Promise.all(files).then((file_link)=>{
+      console.log(file_link[0]);
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i.toString()).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
+        console.log(parser_link[0][0]);
         for (var i = 0; i < 30; i++) {
           if (file_link.link[i]!=parser_link[i][0].link) {
             console.log('new parser - ' + JSON.stringify(parser_link[0][0]));
@@ -31,7 +33,7 @@ module.exports = function () {
           }
         }
         resolve(tosend);
-        
+
       }).catch((error)=>{
         reject('Error parsing: ' + error);
       })
