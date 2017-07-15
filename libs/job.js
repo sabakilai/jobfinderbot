@@ -12,14 +12,14 @@ module.exports = function () {
     for (var i = 1; i < 31; i++) {
       files.push(AWS.read('jobkg' + dict(i.toString()).branch + '.json'));
     }
-    Promise.all(files).then((file_link)={
+    Promise.all(files).then((file_link)=>{
 
 
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
-        
+
         console.log(parser_link[0]);
         resolve('hi!')
 
