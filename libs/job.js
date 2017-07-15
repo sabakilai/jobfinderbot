@@ -21,7 +21,7 @@ module.exports = function () {
       }
       Promise.all(parsers).then((parser_link)=>{
 
-        console.log('parser link - 'parser_link[0][0]);
+        console.log('parser link - ' + parser_link[0][0]);
         resolve('hi!')
 
 
