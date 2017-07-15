@@ -20,7 +20,13 @@ module.exports = function () {
         parsers.push(parser(dict(i.toString()).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
-        console.log(parser_link[0][0]);
+
+        for (var i = 0; i < 30; i++) {
+          console.log(parser_link[i][0]);
+        }
+
+
+
         for (var i = 0; i < 30; i++) {
           if (file_link.link[i]!=parser_link[i][0].link) {
             console.log('new parser - ' + JSON.stringify(parser_link[0][0]));
@@ -35,7 +41,7 @@ module.exports = function () {
         resolve(tosend);
 
       }).catch((error)=>{
-        reject('Error parsing: ' + error);
+        reject('Error parsing1: ' + error);
       })
     }).catch((error)=>{
       reject('Error reading files: ' + error);
