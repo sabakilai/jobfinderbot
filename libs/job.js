@@ -14,14 +14,14 @@ module.exports = function () {
     }
     Promise.all(files).then((file_link)=>{
       console.log('file');
-      console.log(file_link[0]);
+      console.log(file_link[0].link);
 
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i.toString()).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
         console.log('pareser');
-        console.log(parser_link[0]);
+        console.log(parser_link[0][0].link);
         resolve('hi!')
 
 
