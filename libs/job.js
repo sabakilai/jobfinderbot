@@ -22,6 +22,7 @@ module.exports = function () {
       Promise.all(parsers).then((parser_link)=>{
 
         for (var i = 0; i < 30; i++) {
+          console.log(i);
           console.log(parser_link[i][0]);
         }
 
