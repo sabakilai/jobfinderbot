@@ -5,9 +5,9 @@ var dict = require('./dict');
 module.exports = function () {
   var parsers = [];
   //for (var i = 1; i < 31; i++) {
-    parsers.push(parser(dict(11).branch,1));
+  //  parsers.push(parser(dict(11).branch,1));
   //}
-  Promise.all(parsers).then((data)=>{
+  parser("6",1).then((data)=>{
     console.log(data);
 
   })
