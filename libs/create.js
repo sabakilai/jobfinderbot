@@ -8,10 +8,10 @@ module.exports = function () {
   //  parsers.push(parser(dict(11).branch,1));
   //}
   Promise.all([
-    parser("6",1),
-    parser("1",1)
+    parser("6",2),
+    parser("1",2)
   ]) .then((data)=>{
     console.log(data);
-
+    console.log(data[0][0].link);
   })
 }
