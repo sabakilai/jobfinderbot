@@ -14,11 +14,12 @@ module.exports = function () {
     }
     Promise.all(files).then((file_link)={
 
-      console.log("file_link[0].link");
+
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
+        console.log('hi');
         console.log(parser_link[0]);
 
 
