@@ -27,7 +27,7 @@ module.exports = function () {
         for (var i = 0; i < 30; i++) {
           if (file_link[i].link!=parser_link[i][0].link) {
             console.log('new parser - ' + JSON.stringify(parser_link[0][0]));
-            AWS.save('jobkg' + dict((i+1).toString()).branch + '.json', JSON.stringify(parser_link[0][0])).then((message)=>{
+            AWS.save('jobkg' + dict((i+1).toString()).branch + '.json', JSON.stringify(parser_link[i][0])).then((message)=>{
               console.log(message);
             }).catch((error)=>{
               console.log(error);;
