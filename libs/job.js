@@ -14,7 +14,7 @@ module.exports = function () {
     }
     Promise.all(files).then((file_link)={
 
-      console.log('file_link[0].link)';
+      console.log("file_link[0].link");
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i).branch,1));
       }
