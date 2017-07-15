@@ -11,6 +11,7 @@ module.exports = function () {
   Promise.all(parsers).then((data)=>{
     for (var i = 0; i < 30; i++) {
       console.log('jobkg' + dict((i+1).toString()).branch + '.json');
+      console.log(data[i][0]);
       saves.push(AWS.save('jobkg' + dict((i+1).toString()).branch + '.json',data[i][0]))
     }
     Promise.all(saves).then((messages)=>{
