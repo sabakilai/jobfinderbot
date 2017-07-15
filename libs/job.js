@@ -13,15 +13,15 @@ module.exports = function () {
       files.push(AWS.read('jobkg' + dict(i.toString()).branch + '.json'));
     }
     Promise.all(files).then((file_link)=>{
-
-      console.log('file - ' + file_link[0]);
+      console.log('file');
+      console.log(file_link[0]);
 
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i.toString()).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
-
-        console.log('parser link - ' + parser_link[0][0]);
+        console.log('pareser');
+        console.log(parser_link[0]);
         resolve('hi!')
 
 
