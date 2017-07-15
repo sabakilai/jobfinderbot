@@ -19,7 +19,7 @@ module.exports = {
       })
     });
   },
-  read(file, data){
+  save(file, data){
     return new Promise(function (resolve, reject) {
       var params = {
               Bucket: 'jobfinderkg',
