@@ -7,7 +7,8 @@ module.exports = function () {
   for (var i = 1; i < 31; i++) {
     parsers.push(parser(dict(i.toString()).branch,1));
   }
-  Promise.all(parsers) .then((data)=>{
-    console.log(data);
+  Promise.all(parsers).then((data)=>{
+    console.log(data[0][0]);
+    console.log(data[1][0]);
   })
 }
