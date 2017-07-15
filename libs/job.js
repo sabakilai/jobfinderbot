@@ -19,9 +19,9 @@ module.exports = function () {
         parsers.push(parser(dict(i).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
-        console.log('hi');
+        
         console.log(parser_link[0]);
-
+        resolve('hi!')
 
 
       }).catch((error)=>{
