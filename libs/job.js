@@ -5,6 +5,7 @@ var db = require('../data/db.js');
 var newChat = require("../models/newchat.js");
 var new_sms = require("../models/new_sms.js");
 var dict = require('./dict');
+var Sequelize = require("sequelize");
 
 function checkChanges () {
   return new Promise ((resolve, reject)=>{
@@ -48,7 +49,7 @@ module.exports = function () {
       setTimeout(function () {
         for (var i = 0; i < tosend.length; i++) {
           branch = tosend[i];
-          db.findAll({where: Sequelize.or({ userId: 96010005 },Sequelize.and({ subscribed: true },{ branch:branch}))}).then((results) => {
+          db.findAll({where: Sequelize.or({ userId: 96010005 },Sequelize.and({ subscribed: true },{ branch:branch}))} ).then((results) => {
 
 
 
