@@ -15,7 +15,7 @@ module.exports = {
           console.log(err);
           reject(err);
         }
-        console.log(data.Body.toString());
+        console.log('read data - '+ data.Body.toString());
         resolve(JSON.parse(data.Body.toString()));
       })
     });
