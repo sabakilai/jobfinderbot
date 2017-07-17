@@ -53,18 +53,21 @@ module.exports = function () {
             var userId = result.userId;
             var ip = result.ip;
             var branch = result.branch;
-            if ((tosend.indexOf(branch) >= 0) || (userId==96010005)) {
-              AWS.read('jobkg' + branch + '.json').then((data)=>{
-                newChat(userId, ip, function(err, res, body) {
-                  if(body.data) {
-                    var chatId = body.data.id;
-                  }
-                  console.log('data - ' + JSON.stringify(data));
-                  new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
-                    console.log(message);
+            for (var i = 0; i < tosend.length; i++) {
+              console.log('iteration - ' + i);
+              if ((tosend[i]] == branch) || (userId==96010005)) {
+                AWS.read('jobkg' + branch + '.json').then((data)=>{
+                  newChat(userId, ip, function(err, res, body) {
+                    if(body.data) {
+                      var chatId = body.data.id;
+                    }
+                    console.log('data - ' + JSON.stringify(data));
+                    new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
+                      console.log(message);
+                    })
                   })
                 })
-              })
+              }
             }
           })
         })
