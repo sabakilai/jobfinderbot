@@ -58,6 +58,7 @@ module.exports = function () {
               var userId = result.userId;
               var ip = result.ip;
               var messages = [];
+              console.log('before read file is jobkg' + branch + '.json');
               AWS.read('jobkg' + branch + '.json').then((data)=>{
                 newChat(userId, ip, function(err, res, body) {
                   if(body.data) {
