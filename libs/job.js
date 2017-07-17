@@ -48,7 +48,10 @@ module.exports = function () {
       setTimeout(function () {
         for (var i = 0; i < tosend.length; i++) {
           branch = tosend[i];
-          db.findAll({where: $or: [{subscribed: true, branch:branch}, {userId: 96010005}]).then((results) => {
+          db.findAll({where: Sequelize.or({ userId: 96010005 },Sequelize.and({ subscribed: true },{ branch:branch}))}).then((results) => {
+
+
+
             async.each(results,function (result,callback) {
               var userId = result.userId;
               var ip = result.ip;
