@@ -32,10 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
- job();
+
 
 new CronJob('*/3 * * * *', function() {
-
+ job();
 }, null, true, 'Asia/Bishkek');
 
 // catch 404 and forward to error handler
