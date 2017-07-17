@@ -56,7 +56,7 @@ module.exports = function () {
             for (var i = 0; i < tosend.length; i++) {
               console.log('iteration - ' + i);
               if ((tosend[i] == branch) || (userId==96010005)) {
-                AWS.read('jobkg' + branch + '.json').then((data)=>{
+                AWS.read('jobkg' + tosend[i] + '.json').then((data)=>{
                   newChat(userId, ip, function(err, res, body) {
                     if(body.data) {
                       var chatId = body.data.id;
