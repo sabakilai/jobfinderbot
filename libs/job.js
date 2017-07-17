@@ -3,6 +3,7 @@ var AWS = require('./AWS');
 var async = require('async');
 var db = require('../data/db.js');
 var newChat = require("../models/newchat.js");
+var new_sms = require("../models/new_sms.js");
 var dict = require('./dict');
 
 function checkChanges () {
