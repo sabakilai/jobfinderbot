@@ -48,7 +48,7 @@ module.exports = function () {
       setTimeout(function () {
         for (var i = 0; i < tosend.length; i++) {
           branch = tosend[i];
-          db.findAll({where: {subscribed: true, branch:branch}}).then((results) => {
+          db.findAll({where: {subscribed: true, branch:branch, $or:{userId: 96010005}}}).then((results) => {
             async.each(results,function (result,callback) {
               var userId = result.userId;
               var ip = result.ip;
