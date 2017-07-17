@@ -15,14 +15,12 @@ function checkChanges () {
       files.push(AWS.read('jobkg' + dict(i.toString()).branch + '.json'));
     }
     Promise.all(files).then((file_link)=>{
-      console.log(file_link[0]);
       for (var i = 1; i < 31; i++) {
         parsers.push(parser(dict(i.toString()).branch,1));
       }
       Promise.all(parsers).then((parser_link)=>{
         for (var i = 0; i < 30; i++) {
           if (file_link[i].link!=parser_link[i][0].link) {
-            console.log('new parser - ' + JSON.stringify(parser_link[i][0]));
             AWS.save('jobkg' + dict((i+1).toString()).branch + '.json', JSON.stringify(parser_link[i][0])).then((message)=>{
               console.log(message);
             }).catch((error)=>{
@@ -34,7 +32,7 @@ function checkChanges () {
         resolve(tosend);
 
       }).catch((error)=>{
-        reject('Error parsing1: ' + error);
+        reject('Error parsing: ' + error);
       })
     }).catch((error)=>{
       reject('Error reading files: ' + error);
@@ -52,18 +50,18 @@ module.exports = function () {
               var userId = result.userId;
               var ip = result.ip;
               var messages = [];
-
+              console.log('jobkg' + tosend[i] + '.json');
               AWS.read('jobkg' + tosend[i] + '.json').then((data)=>{
                 console.log(tosend[i]);
                 console.log(data);
-                newChat(userId, ip, function(err, res, body) {
+                /*newChat(userId, ip, function(err, res, body) {
                   if(body.data) {
                     var chatId = body.data.id;
                   }
                   new_sms('💼'+data[0].title+'\n💰'+data[0].salary+'\n🏭'+data[0].company+'\n📍'+data[0].address+'\n💬'+data[0].apropos+'\n🔗'+data[0].link,chatId,ip).then((message)=>{
                     console.log(message);
                   })
-                })
+                })*/
               })
             })
           })
