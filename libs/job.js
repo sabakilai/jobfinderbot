@@ -58,7 +58,7 @@ module.exports = function () {
                   if(body.data) {
                     var chatId = body.data.id;
                   }
-                  new_sms('💼'+data[0].title+'\n💰'+data[0].salary+'\n🏭'+data[0].company+'\n📍'+data[0].address+'\n💬'+data[0].apropos+'\n🔗'+data[0].link,chatId,ip).then((message)=>{
+                  new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
                     console.log(message);
                   })
                 })
