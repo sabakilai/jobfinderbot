@@ -50,7 +50,7 @@ module.exports = function () {
               var userId = result.userId;
               var ip = result.ip;
               var messages = [];
-              console.log(tosend);
+              console.log(tosend[0]);
               console.log(i);
               console.log('jobkg' + tosend[i] + '.json');
               AWS.read('jobkg' + tosend[i] + '.json').then((data)=>{
