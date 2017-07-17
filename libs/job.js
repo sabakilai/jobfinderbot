@@ -41,19 +41,19 @@ function checkChanges () {
 };
 
 module.exports = function () {
+  var file;
   checkChanges().then((tosend)=>{
     if (tosend.length > 0) {
       setTimeout(function () {
         for (var i = 0; i < tosend.length; i++) {
+          branch = tosend[i];
           db.findAll({where: {subscribed: true, branch:tosend[i]}}).then((results) => {
             async.each(results,function (result,callback) {
               var userId = result.userId;
               var ip = result.ip;
               var messages = [];
-              console.log(tosend[0]);
-              console.log(i);
-              console.log('jobkg' + tosend[i] + '.json');
-              AWS.read('jobkg' + tosend[i] + '.json').then((data)=>{
+              console.log('jobkg' + branch + '.json');
+              AWS.read('jobkg' + branch + '.json').then((data)=>{
                 console.log(tosend[i]);
                 console.log(data);
                 /*newChat(userId, ip, function(err, res, body) {
