@@ -44,23 +44,17 @@ function checkChanges () {
 };
 
 module.exports = function () {
-  var branch;
+
   checkChanges().then((tosend)=>{
     if (tosend.length > 0) {
       setTimeout(function () {
-        for (var i = 0; i < tosend.length; i++) {
-          branch = tosend[i];
-          db.findAll({where: Sequelize.or({ userId: 96010005 },Sequelize.and({ subscribed: true },{ branch:branch}))} ).then((results) => {
-            var file = 'jobkg' + branch + '.json';
-            console.log(file);
-
-
-            async.each(results,function (result,callback) {
-              var userId = result.userId;
-              var ip = result.ip;
-              var messages = [];
-              console.log(file);
-              AWS.read(file).then((data)=>{
+        db.findAll({where: {subscribed: true }}).then((results) => {
+          async.each(results,function (result,callback) {
+            var userId = result.userId;
+            var ip = result.ip;
+            var branch = result.branch;
+            if ((tosend.indexOf(branch) >= 0) || (userId==96010005)) {
+              AWS.read('jobkg' + branch + '.json').then((data)=>{
                 newChat(userId, ip, function(err, res, body) {
                   if(body.data) {
                     var chatId = body.data.id;
@@ -71,9 +65,9 @@ module.exports = function () {
                   })
                 })
               })
-            })
+            }
           })
-        }
+        })
       },10000)
     } else {
       console.log('Nothing to send.');
