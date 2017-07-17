@@ -23,6 +23,7 @@ function checkChanges () {
       Promise.all(parsers).then((parser_link)=>{
         for (var i = 0; i < 30; i++) {
           if (file_link[i].link!=parser_link[i][0].link) {
+            console.log('parser_link - ' + JSON.stringify(parser_link[i][0]));
             AWS.save('jobkg' + dict((i+1).toString()).branch + '.json', JSON.stringify(parser_link[i][0])).then((message)=>{
               console.log(message);
             }).catch((error)=>{
@@ -62,6 +63,7 @@ module.exports = function () {
                   if(body.data) {
                     var chatId = body.data.id;
                   }
+                  console.log('data - ' + data);
                   new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
                     console.log(message);
                   })
