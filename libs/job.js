@@ -63,7 +63,7 @@ module.exports = function () {
                   if(body.data) {
                     var chatId = body.data.id;
                   }
-                  console.log('data - ' + data);
+                  console.log('data - ' + JSON.stringify(data));
                   new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
                     console.log(message);
                   })
