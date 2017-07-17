@@ -51,15 +51,16 @@ module.exports = function () {
         for (var i = 0; i < tosend.length; i++) {
           branch = tosend[i];
           db.findAll({where: Sequelize.or({ userId: 96010005 },Sequelize.and({ subscribed: true },{ branch:branch}))} ).then((results) => {
-
+            var file = 'jobkg' + branch + '.json';
+            console.log(file);
 
 
             async.each(results,function (result,callback) {
               var userId = result.userId;
               var ip = result.ip;
               var messages = [];
-              console.log('before read file is jobkg' + branch + '.json');
-              AWS.read('jobkg' + branch + '.json').then((data)=>{
+              console.log(file);
+              AWS.read(file).then((data)=>{
                 newChat(userId, ip, function(err, res, body) {
                   if(body.data) {
                     var chatId = body.data.id;
