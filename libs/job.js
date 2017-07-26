@@ -58,13 +58,17 @@ module.exports = function () {
               if ((tosend[i] == branch) || (userId==96010005)) {
                 AWS.read('jobkg' + tosend[i] + '.json').then((data)=>{
                   newChat(userId, ip, function(err, res, body) {
-                    if(body.data) {
-                      var chatId = body.data.id;
+                    if (body) {
+                      if(body.data) {
+                        var chatId = body.data.id;
+                      }
+                      console.log('data - ' + JSON.stringify(data));
+                      new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
+                        console.log(message);
+                      })
+                    }else {
+                      console.log('Body is undefined! ip - ' + ip + '; UserId - ' + userId);
                     }
-                    console.log('data - ' + JSON.stringify(data));
-                    new_sms('💼'+data.title+'\n💰'+data.salary+'\n🏭'+data.company+'\n📍'+data.address+'\n💬'+data.apropos+'\n🔗'+data.link,chatId,ip).then((message)=>{
-                      console.log(message);
-                    })
                   })
                 })
               }
