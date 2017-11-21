@@ -75,6 +75,8 @@ router.post("/", function(req, res, next) {
                 }, 3000);
               })
             })
+          } else if (content == "Старт") {
+            sms(selectField(),chatId, ip)
           } else {
         		sms(errMessage, chatId, ip);
           }
@@ -117,6 +119,8 @@ router.post("/", function(req, res, next) {
                   sms(message, chatId, ip);
                 })
               }
+            } else if (content == "Старт") {
+              sms(allComands(subscribed),chatId, ip)
             } else {
         		  sms(errMessage, chatId, ip);
           }
